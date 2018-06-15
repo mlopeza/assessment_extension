@@ -1,0 +1,29 @@
+compile
+exit
+console
+;set _root_.scala.collection.Seq(shellPrompt := { _ => "" },SettingKey[_root_.scala.Option[_root_.sbt.File]]("sbtStructureOutputFile") in _root_.sbt.Global := _root_.scala.Some(_root_.sbt.file("C:/Users/Andrew/AppData/Local/Temp/sbt-structure.xml")),SettingKey[_root_.java.lang.String]("sbtStructureOptions") in _root_.sbt.Global := "download, resolveClassifiers");apply -cp "C:/Users/Andrew/.IdeaIC2018.1/config/plugins/Scala/launcher/sbt-structure-1.0.jar" org.jetbrains.sbt.CreateTasks;*/*:dumpStructure
+exit
+test
+test-only -z "should add minutes to a simple time"
+test-only * -z "should add minutes to a simple time"
+test-only *MinuteAdderTest -z "should add minutes to a simple time"
+testOnly *MinuteAdderTest -z "should add minutes to a simple time"
+testOnly * -z "should add minutes to a simple time"
+testOnly * -z Positive
+testOnly * --z Positive
+testOnly * -- -z "should add minutes to a simple time"
+testOnly * -- -z "Positive
+testOnly * -- -z "Positive"
+testOnly * -- -z "Positive
+testOnly * -- -z "Positive"
+exit
+testOnly * -- -z "Positive"
+testOnly * -- -z "should add minutes that increment the hour"
+testOnly * -- -z "should add minutes that change AM and PM"
+test
+testOnly * -- -z "add minutes correctly near midnight and noon"
+testOnly * -- -z "Positive"
+reload
+test
+~test-quick
+~testQuick

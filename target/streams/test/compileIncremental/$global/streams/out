@@ -1,0 +1,27 @@
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial source changes: [0m
+[0m[[0m[0mdebug[0m] [0m[0m	removed:Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	added: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	modified: Set(C:\Users\Andrew\minute_adder\src\test\scala\assessment\MinuteAdderTest.scala)[0m
+[0m[[0m[0mdebug[0m] [0m[0mInvalidated products: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mExternal API changes: API Changes: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mModified binary dependencies: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial directly invalidated classes: Set(assessment.MinuteAdderTest)[0m
+[0m[[0m[0mdebug[0m] [0m[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mSources indirectly invalidated by:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	product: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	binary dep: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0m	external source: Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mAll sources are invalidated.[0m
+[0m[[0m[0mdebug[0m] [0m[0mRecompiling all 1 sources: invalidated sources (1) exceeded 50.0% of all sources[0m
+[0m[[0m[0minfo[0m] [0m[0mCompiling 1 Scala source to C:\Users\Andrew\minute_adder\target\scala-2.12\test-classes ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mGetting org.scala-sbt:compiler-bridge_2.12:1.1.7:compile for Scala 2.12.6[0m
+[0m[[0m[0mdebug[0m] [0m[0mGetting org.scala-sbt:compiler-bridge_2.12:1.1.7:compile for Scala 2.12.6[0m
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] Running cached compiler 357a4bb7 for Scala compiler version 2.12.6[0m
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] The Scala compiler is invoked with:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-bootclasspath[0m
+[0m[[0m[0mdebug[0m] [0m[0m	C:\Program Files\Java\jre1.8.0_171\lib\resources.jar;C:\Program Files\Java\jre1.8.0_171\lib\rt.jar;C:\Program Files\Java\jre1.8.0_171\lib\sunrsasign.jar;C:\Program Files\Java\jre1.8.0_171\lib\jsse.jar;C:\Program Files\Java\jre1.8.0_171\lib\jce.jar;C:\Program Files\Java\jre1.8.0_171\lib\charsets.jar;C:\Program Files\Java\jre1.8.0_171\lib\jfr.jar;C:\Program Files\Java\jre1.8.0_171\classes;C:\Users\Andrew\.sbt\boot\scala-2.12.6\lib\scala-library.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0m	-classpath[0m
+[0m[[0m[0mdebug[0m] [0m[0m	C:\Users\Andrew\minute_adder\target\scala-2.12\test-classes;C:\Users\Andrew\minute_adder\target\scala-2.12\classes;C:\Users\Andrew\.ivy2\cache\org.typelevel\cats-core_2.12\jars\cats-core_2.12-1.1.0.jar;C:\Users\Andrew\.ivy2\cache\org.typelevel\cats-macros_2.12\jars\cats-macros_2.12-1.1.0.jar;C:\Users\Andrew\.ivy2\cache\org.typelevel\machinist_2.12\jars\machinist_2.12-0.6.2.jar;C:\Users\Andrew\.sbt\boot\scala-2.12.6\lib\scala-reflect.jar;C:\Users\Andrew\.ivy2\cache\org.typelevel\cats-kernel_2.12\jars\cats-kernel_2.12-1.1.0.jar;C:\Users\Andrew\.ivy2\cache\org.scalatest\scalatest_2.12\bundles\scalatest_2.12-3.0.5.jar;C:\Users\Andrew\.ivy2\cache\org.scalactic\scalactic_2.12\bundles\scalactic_2.12-3.0.5.jar;C:\Users\Andrew\.ivy2\cache\org.scala-lang.modules\scala-xml_2.12\bundles\scala-xml_2.12-1.0.6.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0mScala compilation took 1.081857556 s[0m
+[0m[[0m[0minfo[0m] [0m[0mDone compiling.[0m
