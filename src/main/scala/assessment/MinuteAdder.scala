@@ -5,13 +5,13 @@ import cats.implicits._
 
 import scala.util.matching.Regex
 
-case class Time(hour: Int, minute: Int, midday: String)
+case class Time(day: Int, hour: Int, minute: Int, midday: String)
 
 object TimeValidation {
 
   type ValidationResult[A] = ValidatedNel[Throwable, A]
 
-  val validationRegex: Regex = """([0-1]?[0-9]):([0-5]?[0-9]) (AM|PM)""".r
+  val validationRegex: Regex = """([0-7]) ([0-1]?[0-9]):([0-5]?[0-9]) (AM|PM)""".r
 
   // This is a handy way to catch errors from converting a string to an int.
   def validateInt(s: String): ValidationResult[Int] = {
@@ -25,14 +25,19 @@ object TimeValidation {
   // This validates that the given string is in the right format, parses the time parts, and returns a Time.
   def validateTime(time: String): ValidationResult[Time] =
     time match {
-      case validationRegex(hourPart, minutePart, middayPart) => Time(hourPart.toInt, minutePart.toInt, middayPart).validNel
-      case _ => new Exception(s"""Time "$time" is not in the format "[H]H:mm {AM|PM}"""").invalidNel
+      case validationRegex(dayPart, hourPart, minutePart, middayPart) =>
+        Time(dayPart.toInt, hourPart.toInt, minutePart.toInt, middayPart).validNel
+      case _ => new Exception(s"""Time "$time" is not in the format "d [H]H:mm {AM|PM}"""").invalidNel
     }
 }
 
 object MinuteAdder {
 
   import TimeValidation._
+
+  private val MinutesHour = 60
+  private val MinutesDay = MinutesHour * 24
+  private val MinutesWeek = MinutesDay * 7
 
   // This is just to prevent repetition later on.
   def baseChange(value: Int, base: Int): Int =
@@ -41,23 +46,31 @@ object MinuteAdder {
   // This returns a Validation that is either the result of the operation, or a non empty list of Exceptions.
   def addMinutes(time: String, minutesToAdd: Int): ValidationResult[String] = {
     validateTime(time).map {
-      case Time(hour, minute, midday) =>
-        // convert the time to minutes since midnight to make later calculations more obvious
-        val minutesSinceMidnight = minute + ((hour % 12) * 60) + (if (midday == "PM") 12 * 60 else 0)
+      case Time(day, hour, minute, midday) =>
+        // convert the time to minutes since the first day of the week to make later calculations more obvious
+        val minutesSinceMonday = (
+          minute
+          + ((hour % 12) * MinutesHour)
+          + (day * MinutesDay)
+          + (if (midday == "PM") 12 * MinutesHour else 0))
+
+        // Normalize minutes after applying the minutesAdd
+        val rawMinutes = baseChange(minutesSinceMonday + minutesToAdd, MinutesWeek)
 
         // figure out the new minute part
-        val rawMinutes = minutesSinceMidnight + minutesToAdd
-        val newMinutes = baseChange(rawMinutes, 60)
+        val newMinutes = baseChange(rawMinutes, MinutesHour)
 
         // figure out the new hour part
-        val rawHours = rawMinutes / 60 - (if (rawMinutes < 0) 1 else 0)
-        val newHours24 = baseChange(rawHours, 24)
-        val newHours12 = if (newHours24 % 12 == 0) 12 else newHours24 % 12
+        val rawHours = (rawMinutes % MinutesDay) / MinutesHour
+        val newHours12 = if (rawHours % 12 == 0) 12 else rawHours % 12
+
+        // figure out the day part
+        val newDay = rawMinutes / MinutesDay
 
         // figure out the new midday part
-        val newMidday = if (newHours24 >= 12) "PM" else "AM"
+        val newMidday = if (rawHours >= 12) "PM" else "AM"
 
-        f"$newHours12:$newMinutes%02d $newMidday"
+        f"$newDay $newHours12:$newMinutes%02d $newMidday"
     }
   }
 
